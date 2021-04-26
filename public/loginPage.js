@@ -1,30 +1,30 @@
 'use strict'
 
-const uForm = new UserForm();
+const userForm = new UserForm();
 
 /* LOGIN */
-uForm.loginFormCallback = function (data) {
+userForm.loginFormCallback = function (data) {
   ApiConnector.login(
     data,
     function (response) {
-      if (response?.success) {
+      if (response.success) {
         location.reload();
       } else {
-        uForm.setLoginErrorMessage('Не удалось авторизоваться!');
+        userForm.setLoginErrorMessage(response.error);
       }
     } 
   );
 }
 
 /* REGISTER */ 
-uForm.registerFormCallback = function (data) {
+userForm.registerFormCallback = function (data) {
   ApiConnector.register(
     data,
     function (response) {
-      if (response?.success) {
+      if (response.success) {
         location.reload();
       } else {
-        uForm.setRegisterErrorMessage('Не удалось зарегистрироваться!');
+        userForm.setRegisterErrorMessage(response.error);
       }
     } 
   );
